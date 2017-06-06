@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+:root {
+  --text-color: #000000; 
+  --left-width: 200px;
+}
+
+*{
+	padding: 0;
+	margin: 0;
+}
+
+html,body{
+	width: 100%;
+	height: 100%;
+}
+
+#mode{
+	width: var(--left-width);
+	height: 100%;
+	float: left;
+	background: #ccc;
+}
+#cy {
+  width: calc(100% - 200px);
+  height: 100%;
+  float: right;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="lib/graph.editor.css">
+<link rel="stylesheet" type="text/css" href="lib/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="lib/bootstrap-colorpicker.min.css">
+</head>
+<body>
+	<div id="mode">
+		<ul id="menu">
+			<li> <b>基本节点</b>
+				<div>
+					<a>
+						<img draggable="true" id="pc" src="img/pc.png"></a>
+					<a>
+						<img draggable="true" id="router" src="img/router.png"></a>
+				</div>
+			</li>
+			<li> <b>默认形状</b>
+				<div>
+					<a>
+						<img draggable="true" id="jx" src="img/jx.png"></a>
+					<a>
+						<img draggable="true" id="yjjx" src="img/yjjx.png"></a>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div id="cy" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+
+	<div class="graph-editor__property" id="graphEditor" style="position: fixed; box-sizing: border-box; top: 0px; right: -305px; width: 300px; height: 100%;overflow: hidden;">
+		<form class="form-horizontal">
+			<div class="class-group">
+				<h4>Element</h4>
+				<div class="form-group">
+					<label class="col-sm-4 control-label font-small">名称</label>
+					<div class="input-group input-group-sm col-sm-8">
+						<input class="form-control"></div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-4 control-label font-small">字体大小</label>
+					<div class="input-group input-group-sm col-sm-8">
+						<input class="form-control"></div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-4 control-label font-small">文本颜色</label>
+					<div class="input-group input-group-sm col-sm-8 colorpicker-element">
+						<input class="form-control">
+						<span class="input-group-addon"> <i style="background-color: rgb(51, 51, 51);"></i>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="class-group">
+				<h4>Node</h4>
+				<div class="form-group">
+					<label class="col-sm-4 control-label font-small">X坐标</label>
+					<div class="input-group input-group-sm col-sm-8">
+						<input class="form-control" type="number" name="node-positionX"></div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-4 control-label font-small">Y坐标</label>
+					<div class="input-group input-group-sm col-sm-8">
+						<input class="form-control" type="number" name="node-positionY"></div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-4 control-label font-small">旋转</label>
+					<div class="input-group input-group-sm col-sm-8">
+						<input class="form-control"></div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-4 control-label font-small">边框</label>
+					<div class="input-group input-group-sm col-sm-8">
+						<input class="form-control"></div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-4 control-label font-small">边框颜色</label>
+					<div class="input-group input-group-sm col-sm-8 colorpicker-element">
+						<input class="form-control">
+						<span class="input-group-addon"> <i></i>
+						</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-4 control-label font-small">状态</label>
+					<div class="input-group input-group-sm col-sm-8 colorpicker-element">
+						<input class="form-control">
+						<span class="input-group-addon">
+							<i></i>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="class-group">
+				<h4>Text</h4>
+				<div class="form-group">
+					<label class="col-sm-4 control-label font-small">宽</label>
+					<div class="input-group input-group-sm col-sm-8">
+						<input class="form-control" type="number" name="node-width"></div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-4 control-label font-small">高</label>
+					<div class="input-group input-group-sm col-sm-8">
+						<input class="form-control" type="number" name="node-height"></div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-4 control-label font-small">背景色</label>
+					<div class="input-group input-group-sm col-sm-8 colorpicker-element">
+						<input class="form-control" name="node-bgColor">
+						<span class="input-group-addon">
+							<i></i>
+						</span>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<script type="text/javascript" src="lib/jquery.min.js"></script>
+	<script src="lib/cytoscape.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="lib/jquery_ui/jquery-ui.min.css">
+	<script type="text/javascript" src="lib/jquery_ui/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+
+	<script type="text/javascript">
+		$("#menu").accordion({
+		    collapsible: true,
+		    heightStyle: "content"
+		});
+		function allowDrop(ev){
+			ev.preventDefault();
+		}
+		var img = $("#mode img")
+		for(var i=0; i<img.length; i++){
+			img[i].ondragstart = function (ev) {
+				ev.dataTransfer.setData("Text",ev.target.id);
+			}
+		}
+
+
+
+	</script>
+</body>
+</html>
