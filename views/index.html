@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<meta charset="utf-8">
-	<style type="text/css">
+<title></title>
+<meta charset="utf-8">
+<style type="text/css">
 :root {
   --text-color: #000000; 
   --left-width: 200px;
@@ -26,12 +26,12 @@ html,body{
 	background: #ccc;
 }
 #cy {
-  width: calc(100% - 200px);
+  width: calc(100% - var(--left-width));
   height: 100%;
   float: right;
 }
 </style>
-<link rel="stylesheet" type="text/css" href="lib/graph.editor.css">
+
 <link rel="stylesheet" type="text/css" href="lib/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="lib/bootstrap-colorpicker.min.css">
 </head>
@@ -149,6 +149,8 @@ html,body{
 	<script src="lib/cytoscape.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="lib/jquery_ui/jquery-ui.min.css">
 	<script type="text/javascript" src="lib/jquery_ui/jquery-ui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="lib/editor/editor.css">
+	<script type="text/javascript" src="lib/editor/editor.js"></script>
 	<script type="text/javascript" src="index.js"></script>
 
 	<script type="text/javascript">
