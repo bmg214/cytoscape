@@ -5,27 +5,29 @@ var cy = cytoscape({
     .css({
       'background-image': 'img/pc.png',
       "width": '50px',
-      'background-fit': 'cover',
-      'target-arrow-shape': 'triangle',
-      'height': '50px'
+      "height": '50px',
+      "background-color":'white'
     })
     .selector('node[label = "router"]')
     .css({
       'background-image': 'img/router.png',
       "width": '50px',
-      'height': '50px'
+      'height': '50px',
+      "background-color":'white'
     })
     .selector('node[label = "jx"]')
     .css({
       'background-image': 'img/jx.png',
-      "width": '100px',
-      'height': '100px'
+      "width": '50px',
+      'height': '50px',
+      "background-color":'white'
     })
     .selector('node[label = "yjjx"]')
     .css({
       'background-image': 'img/yjjx.png',
-      "width": '150px',
-      'height': '150px'
+      "width": '50px',
+      'height': '50px',
+      "background-color":'white'
     })
 });
 
@@ -64,6 +66,5 @@ cy.on('tap', function(evt) {
       $("#graphEditor").animate({
         right: '-305px'
       });
-
     }
 });

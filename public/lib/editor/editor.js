@@ -22,3 +22,4 @@ function setNodeAttribute(node) {
       node.position('y', Number(this.value));
    })
 }
+
