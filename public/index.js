@@ -57,7 +57,8 @@ cy.on('tap', function(evt) {
       var node = cy.$('#' + ele.id())
   
       getNodeAttribute(node)
-      setNodeAttribute(node) 
+      setNodeAttribute(node)
+      changeColor() 
 
       $("#graphEditor").animate({
         right: '5px'

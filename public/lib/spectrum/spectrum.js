@@ -872,6 +872,9 @@
                 // Update the selection palette with the current color
                 addColorToSelectionPalette(color);
             }
+            
+            boundElement.prev().val(color)
+            boundElement.children().css("background",color)
 
             if (isInput) {
                 boundElement.val(displayColor);
