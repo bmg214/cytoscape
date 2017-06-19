@@ -1,13 +1,27 @@
-gitÊ¹ÓÃ
-ÊäÈëgit add .    
-½«¸Ä¶¯µÄµØ·½Ìí¼Óµ½°æ±¾¹ÜÀíÆ÷
+gitä½¿ç”¨
+è¾“å…¥git add .
+å°†æ”¹åŠ¨çš„åœ°æ–¹æ·»åŠ åˆ°ç‰ˆæœ¬ç®¡ç†å™¨
 
-ÊäÈëgit commit -m "changes log"  
-Ìá½»µ½±¾µØµÄ°æ±¾¿ØÖÆ¿âÀï£¬ÒıºÅÀïÃæÊÇÄã¶Ô±¾´ÎÌá½»µÄËµÃ÷ĞÅÏ¢¡£
+è¾“å…¥git commit -m "changes log"
+æäº¤åˆ°æœ¬åœ°çš„ç‰ˆæœ¬æ§åˆ¶åº“é‡Œï¼Œå¼•å·é‡Œé¢æ˜¯ä½ å¯¹æœ¬æ¬¡æäº¤çš„è¯´æ˜ä¿¡æ¯ã€‚
 
-ÊäÈëgit push -u origin master  
-½«Äã±¾µØµÄ²Ö¿âÌá½»µ½ÄãµÄgithubÕËºÅÀï£¬´ËÊ±»áÒªÇóÄãÊäÈëÄãµÄgithubµÄÕËºÅºÍÃÜÂë¡£
+è¾“å…¥git push -u origin master
+å°†ä½ æœ¬åœ°çš„ä»“åº“æäº¤åˆ°ä½ çš„githubè´¦å·é‡Œï¼Œæ­¤æ—¶ä¼šè¦æ±‚ä½ è¾“å…¥ä½ çš„githubçš„è´¦å·å’Œå¯†ç ã€‚
 
 $ git pull origin
 
 $ git fetch origin master
+
+
+cytoscapeäº‹ä»¶ç±»å‹
+mouseover:é¼ æ ‡ç»è¿‡
+tap:å·¦é”®ç‚¹å‡»
+taphold:é•¿æŒ‰
+drag  tapdragover  vclick  click
+select:é€‰ä¸­
+cxttapstart:å³é”®ç‚¹å‡»
+cxtdrag:å³é”®æ‹–æ‹½
+cxtdragout  cxtdragover
+cy.on('tap', function (ev) {
+    // console.log(ev)
+});

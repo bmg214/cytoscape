@@ -13,30 +13,41 @@
     <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
     <script src="http://cdn.bootcss.com/cytoscape/2.3.16/cytoscape.min.js"></script>
     <script>
-        $(function(){
+        $(function() {
             cytoscape({
-              container: document.getElementById('cy'),
-              style: [
-                { selector: 'node[label = "Person"]', 
-                  css: {'background-color': '#6FB1FC', 'content': 'data(name)'}
-                },
-                { selector: 'node[label = "Movie"]', 
-                  css: {'background-color': '#F5A45D', 'content': 'data(title)'}
-                },
-                { selector: 'edge', 
-                  css: {'content': 'data(relationship)', 'target-arrow-shape': 'triangle'}
-                }        
-              ],
-              elements: {
-                nodes: [
-                  {data: {id: '172', name: 'Tom Cruise', label: 'Person'}},
-                  {data: {id: '183', title: 'Top Gun', label: 'Movie'}}
-                ],
-                edges: [{data: {source: '172', target: '183', relationship: 'Acted_In'}}]
-              },
-              layout: { name: 'grid'} 
-            });
-        });
+  container: document.getElementById('cy'),
+
+  layout: {
+    name: 'cose',
+    padding: 10
+  },
+
+  style: cytoscape.stylesheet()
+    .selector('node')
+      .css({
+        'shape': 'data(faveShape)',
+        'width': 'mapData(weight, 40, 80, 20, 60)',
+        'content': 'data(name)',
+        'text-valign': 'center',
+        'text-outline-width': 2,
+        'text-outline-color': 'data(faveColor)',
+        'background-color': 'data(bgColor)',
+        'color': '#fff'
+      })
+   ,
+
+  elements: {
+    nodes: [
+      { data: { id: 'g', name: 'Grge', weight: 70, bgColor:'#f00', faveColor: '#F5A45D', faveShape: 'octagon' } }
+    ]
+  },
+
+  ready: function(){
+    window.cy = this;
+  }
+});
+
+        })
     </script>
 </head>
 <body>

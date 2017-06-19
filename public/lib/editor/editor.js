@@ -1,4 +1,34 @@
+function selectNode(node) {
+    resizeBorder(node)
+}
+
+function resizeBorder(node) {
+    var canvas = $("#cy canvas")[0];
+    var cxt = canvas.getContext("2d");
+    let x = node.position("x");
+    let y = node.position("y");
+    let w = node.width();
+    let h = node.height();
+    cxt.lineWidth = 0.5;
+    cxt.beginPath();
+    cxt.strokeRect(x-w/2, y-h/2,w,h);//矩形边框
+    cxt.lineWidth = 1;
+    cxt.strokeRect(x-w/2-1, y-h/2, 2, 2); //左上角的点
+    cxt.strokeRect(x, y-h/2-1, 2, 2); //顶部中间
+    cxt.strokeRect(x+w/2-1, y-h/2-1, 2, 2); //右上角的点
+    cxt.strokeRect(x-w/2-1, y, 2, 2); //左边中间
+    cxt.strokeRect(x+w/2-1, y, 2, 2); //右边中间
+    cxt.strokeRect(x-w/2-1, y+h/2-1, 2, 2); //左下角的点
+    cxt.strokeRect(x+w/2-1, y+h/2-1, 2, 2); //右下角的点
+    cxt.strokeRect(x-1, y+h/2-1, 2, 2); //底部中间
+    cxt.closePath();/*可选步骤，关闭绘制的路径*/
+    cxt.stroke();
+
+    var bbox =canvas.getBoundingClientRect();
+}
+
 function getNodeAttribute(node) {
+    $("#graphEditor input[name='node-name']").val(node.data().name);
     $("#graphEditor input[name='node-width']").val(node.width());
     $("#graphEditor input[name='node-height']").val(node.height());
     $("#graphEditor input[name='node-bgColor']").val(node.height());
@@ -6,21 +36,62 @@ function getNodeAttribute(node) {
     $("#graphEditor input[name='node-positionX']").val(node.json().position.x);
     $("#graphEditor input[name='node-positionY']").val(node.json().position.y);
 }
-function setNodeAttribute(node) {
-   $("#graphEditor input[name='node-width']").on("change",function (argument) {
-      console.log(node.height())
-      node.height(176)
-      node.data('height', 176);
-      console.log(node.data('height'))
-      console.log(node.height())
 
-   })
+function setNodeAttribute() {
+    //设置名称
+    $("#graphEditor input[name='node-name']").on("change",function (argument) {
+        var value = this.value;
+        cy.nodes().forEach(function( ele ){
+           if(ele.selected()){
+               ele.data().name = value
+           }
+        });
+   });
+     //设置形状
+    $("#graphEditor select[name='node-shape']").on("change",function (argument) {
+        var value = this.value;
+        cy.nodes().forEach(function( ele ){
+           if(ele.selected()){
+               ele.data().shape = value
+           }
+        });
+   });
+   //设置宽度
+   $("#graphEditor input[name='node-width']").on("change",function (argument) {
+        var value = this.value;
+        cy.nodes().forEach(function( ele ){
+           if(ele.selected()){
+                ele.data().width = value
+           }
+        });
+   });
+   //设置宽度
+   $("#graphEditor input[name='node-height']").on("change",function (argument) {
+        var value = this.value;
+        cy.nodes().forEach(function( ele ){
+           if(ele.selected()){
+                ele.data().height = value
+           }
+        });
+   });
+   //设置X坐标
    $("#graphEditor input[name='node-positionX']").on("change",function (argument) {
-      node.position('x', Number(this.value));
-   })
-    $("#graphEditor input[name='node-positionY']").on("change",function (argument) {
-      node.position('y', Number(this.value));
-   })
+        var value = this.value;
+        cy.nodes().forEach(function( ele ){
+           if(ele.selected()){
+               ele.position('x', Number(value));
+           }
+        });
+   });
+   //设置Y坐标
+   $("#graphEditor input[name='node-positionY']").on("change",function (argument) {
+        var value = this.value;
+        cy.nodes().forEach(function( ele ){
+           if(ele.selected()){
+               ele.position('y', Number(value));
+           }
+        });
+   });
 }
 
 function changeColor() {

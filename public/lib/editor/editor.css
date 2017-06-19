@@ -372,3 +372,7 @@ input[readonly] {
     height: 100%;
     overflow: hidden
 }
+
+.curmodel{
+    background: url('/img/dian.png') 3px 5px no-repeat;
+}

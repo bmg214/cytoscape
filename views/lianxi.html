@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+var x = {};
+Object.defineProperty(x, 'count', {
+    value: 0,
+    writable: true
+});
+console.log(x); // Object {count: 0}
+x.count = 1; // 静默失败，不会报错
+console.log(x); // Object {count: 0}
+</script>
+</body>
+</html>
