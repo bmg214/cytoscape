@@ -46,11 +46,13 @@
             <b>基本节点</b>
             <div>
                 <a>
-                    <img draggable="true" id="pc" data="{name:'pc',shape:'123',width:'50',height:'',shape:'rectangle',bgColor:'#ccc'}" src="img/pc.png">
+                    <img draggable="true" id="pc"
+                         data="{name:'pc',shape:'123',width:'50',height:'',shape:'rectangle',bgColor:'#cccccc'}"
+                         src="img/pc.png">
                 </a>
                 <p>电脑</p>
                 <a>
-                    <img draggable="true" id="router" src="img/router.png">
+                    <img draggable="true" id="router" data="{name:'router', shape:'vee',}" src="img/router.png">
                 </a>
                 <p>路由器</p>
             </div>
@@ -59,11 +61,11 @@
             <b>默认形状</b>
             <div>
                 <a>
-                    <img draggable="true" id="jx" src="img/jx.png">
+                    <img draggable="true" id="jx" data="{name:'jx'}" src="img/jx.png">
                 </a>
                 <br>
                 <a>
-                    <img draggable="true" id="yjjx" src="img/yjjx.png">
+                    <img draggable="true" id="yjjx" data="{name:'yjjx'}" src="img/yjjx.png">
                 </a>
             </div>
         </li>
@@ -84,12 +86,12 @@
             <div class="form-group">
                 <label class="col-sm-4 control-label font-small">形状</label>
                 <div class="input-group input-group-sm col-sm-8">
-                    <select name="node-shape" class="form-control">
+                    <select name="node-shape" id="node-shape" class="form-control">
                         <option value="rectangle">矩形</option>
                         <option value="roundrectangle">圆角矩形</option>
                         <option value="cutrectangle">正方形1</option>
                         <option value="square">正方形2</option>
-                         <option value="polygon">正方形3</option>
+                        <option value="polygon">正方形3</option>
                         <option value="ellipse">圆形</option>
                         <option value="triangle">三角形</option>
                         <option value="vee">内三角</option>
@@ -106,10 +108,7 @@
             <div class="form-group">
                 <label class="col-sm-4 control-label font-small">背景色</label>
                 <div class="input-group input-group-sm col-sm-8 colorpicker-element">
-                    <input class="form-control">
-                    <span class="input-group-addon" name='triggerSet'>
-                        <i style="background: #ff00ff;"></i>
-                    </span>
+                    <input class="form-control" name="node-bgColor" type="color">
                 </div>
             </div>
             <div class="form-group">
@@ -141,18 +140,24 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-4 control-label font-small">边框</label>
+                <label class="col-sm-4 control-label font-small">边框宽度</label>
                 <div class="input-group input-group-sm col-sm-8">
-                    <input class="form-control">
+                    <input name="node-borderW" type="number" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label font-small">边框样式</label>
+                <div class="input-group input-group-sm col-sm-8">
+                    <select name="node-borderS" class="form-control" id="node-borderS">
+                        <option value="dashed">虚线</option>
+                        <option value="solid">实线</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-4 control-label font-small">边框颜色</label>
                 <div class="input-group input-group-sm col-sm-8 colorpicker-element">
-                    <input class="form-control">
-                    <span class="input-group-addon" name='triggerSet'>
-							<i style="background: rgb(51, 51, 51);"></i>
-                    </span>
+                    <input class="form-control" type="color" name="node-borderC">
                 </div>
             </div>
         </div>
@@ -161,46 +166,25 @@
             <div class="form-group">
                 <label class="col-sm-4 control-label font-small">字体大小</label>
                 <div class="input-group input-group-sm col-sm-8">
-                    <input class="form-control">
+                    <input class="form-control" type="number" name="node-fontSize">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-4 control-label font-small">文本颜色</label>
                 <div class="input-group input-group-sm col-sm-8 colorpicker-element">
-                    <input class="form-control">
-                    <span class="input-group-addon" name='triggerSet'>
-							<i style="background: rgb(51, 51, 51);"></i>
-                    </span>
+                    <input class="form-control" type="color" name="node-fontColor">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-4 control-label font-small">字体位置</label>
                 <div class="input-group input-group-sm col-sm-8">
-                    <select name="" id="" class="form-control">
+                    <select name="node-textP" class="form-control" id="node-textP">
                         <option value="top">顶部</option>
                         <option value="bottom">底部</option>
-                        <option value="left">居左</option>
-                        <option value="right">居右</option>
                         <option value="center">居中</option>
                     </select>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-sm-4 control-label font-small">字体边框</label>
-                <div class="input-group input-group-sm col-sm-8">
-                    <input class="form-control">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-4 control-label font-small">字体边框颜色</label>
-                <div class="input-group input-group-sm col-sm-8 colorpicker-element">
-                    <input class="form-control">
-                    <span class="input-group-addon" name='triggerSet'>
-							<i style="background: rgb(51, 51, 51);"></i>
-                    </span>
-                </div>
-            </div>
-
         </div>
     </form>
 </div>

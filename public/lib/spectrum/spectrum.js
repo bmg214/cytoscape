@@ -809,7 +809,7 @@
             if (opts.showInput) {
                 textInput.val(displayColor);
             }
-
+            //显示面板
             if (opts.showPalette) {
                 drawPalette();
             }
